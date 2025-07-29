@@ -1,4 +1,1 @@
 # TripVista
-By
-Hariini 
-Kamalini
