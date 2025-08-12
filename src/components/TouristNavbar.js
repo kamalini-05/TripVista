@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './TouristNavbar.css';
+import Tripvista from '../components/tv.png';
 
 const TouristNavbar = ({ onSearch }) => {
   const [query, setQuery] = useState('');
@@ -12,19 +13,22 @@ const TouristNavbar = ({ onSearch }) => {
   return (
     <nav className="tourist-navbar">
       <div className="logo">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Tourism_logo.png" alt="Logo" />
-        <span>ExploreX</span>
+        <img  src={Tripvista} alt="Logo" />
       </div>
       <ul className="nav-links">
         <li><a href="/">Destinations</a></li>
-        <li><a href="/tours">Tours</a></li>
-        <li><a href="/blog">Blog</a></li>
-        <li><a href="/contact">Contact</a></li>
+        <li><a href="/Holidays">Holidays</a></li>
+        <li><a href="/Packages">Packages</a></li>
+        <li><a href="/Transport">Transport</a></li>
+        <li><a href="/Homestay">Hotels&Homestays</a></li>
+        <li><a href="/EventsFestival">Events&Festivals</a></li>
+        <li><a href="/Offer">Offer</a></li>
+        <li><a href="/More">More</a></li>
       </ul>
       <form className="search-form" onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="Search places..."
+          placeholder="Search"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />

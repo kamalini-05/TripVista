@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import TouristNavbar from './components/TouristNavbar';
-import 
-
 function App() {
   const [results, setResults] = useState([]);
 
@@ -15,7 +13,7 @@ function App() {
     <div>
       <TouristNavbar onSearch={handleSearch} />
       <main style={{ padding: '20px' }}>
-        <h1>Welcome to ExploreX</h1>
+
         {results.length > 0 ? (
           <ul>
             {results.map((place, index) => (
