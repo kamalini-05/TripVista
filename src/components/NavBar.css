@@ -1,0 +1,58 @@
+.navbar{
+    height: 60px;
+    background-color:#F9CB99;
+    color: burlywood;
+    font-size: 1.2rem;
+    display:flex;
+    align-items: center;
+    padding: 0 2rem;
+    justify-content: space-between;
+}
+
+.nav-logo{
+    color:rgba(44, 9, 46, 0.708);
+    text-decoration: none;
+    font-family: 'Brush Script MT', cursive;
+    font-style: italic;
+    font-weight: normal;
+    font-size:3.5rem;
+}
+
+.nav-links{
+    display:flex;
+    gap:10px;
+    list-style:none;
+}
+
+.nav-link{
+    color: white;
+    text-decoration: none;
+    padding: 5px 5px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+.nav-link:hover{
+    color: black;
+    text-decoration:wavy;
+    cursor: pointer;
+}   
+
+.nav-icons{
+    display: none;
+    font-size:2rem;
+    cursor:pointer;
+}
+@media screen and (max-width: 600px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        width:100%;
+        top: 80px;
+        background-color: #955e23;
+    }
+    
+    .nav-icons {
+        display: flex;
+    }
+}
