@@ -1,0 +1,115 @@
+/* 🌍 Login Container */
+.auth-container {
+    display: flex;
+    height: 100vh;
+    /*background-image: url('F:/LOGIN/bg.webp'); /* Full background */
+    background-color: slateblue;
+    background-size: cover;
+    background-position: center;
+    color: rgb(10, 10, 10);
+    padding: 0 1.5vw; /* Slightly reduced padding */
+    align-items: center;
+    justify-content: center; /* Center content horizontally */
+    gap: 1vw; /* Controlled spacing between left and right */
+}
+
+/* 🌍 Signup Container */
+.auth-container1 {
+    display: flex;
+    height: 100vh;
+    color: rgb(10, 10, 10);
+    padding: 0 1.5vw;
+    align-items: center;
+    justify-content: center;
+    gap: 1vw;
+}
+
+/* 🔧 Left side with branding or image */
+.auth-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    height: 70vh;
+    max-width: 450px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    /* background-image: url('F:/LOGIN/p2.jpg');
+       background-size: cover;
+       background-position: center; */
+    background-color: rgba(240, 248, 255, 0.295);
+    border-radius: 10px; /* Soften edges */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add depth */
+}
+
+/* 🔧 Right side with form */
+.auth-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 350px;
+}
+
+/* 🧾 Form card */
+.auth-card {
+    background-color: rgba(255, 255, 255, 0.85); /* Slightly more opaque */
+    padding: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    color: black;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 🟦 Button styling */
+.btn-green {
+    background-color: slateblue !important;
+    color: white !important;
+    border: none !important;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-green:hover {
+    background-color: slateblue !important;
+}
+
+/* 📱 Responsive layout */
+@media (max-width: 768px) {
+    .auth-container {
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1rem;
+    }
+
+    .auth-left,
+    .auth-right {
+        max-width: 100%;
+        margin-left: 0;
+    }
+
+    .auth-card {
+        width: 100%;
+        padding: 1.5rem;
+    }
+}
+
+/* 🖋 Logo styling */
+.logo-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 50px;
+    font-weight: 600;
+    color: #000000;
+    margin: 40px;
+}
+
+.logo-cap {
+    font-size: 2.0em; /* Slightly smaller */
+    vertical-align: middle;
+}
