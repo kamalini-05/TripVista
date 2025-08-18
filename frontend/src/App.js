@@ -7,6 +7,7 @@ import Signup from './components/Signup';
 import Home from './components/Home';
 import ForgotPassword from './components/ForgotPassword';
 import ImageSlider from './ImageSlider';
+import Flights from './components/Flights';
 
 function App() {
   const [results, setResults] = useState([]);
@@ -50,6 +51,7 @@ function App() {
         <Route path='/signup' element={<Signup />} />
         <Route path='/forgot-password' element={<ForgotPassword />} />
         <Route path='/home' element={<Home />} />
+        <Route path='/flight' element={<Flights />} />
         <Route path='/slider' element={<ImageSlider />} />
         {/* Optional: 404 fallback */}
         {/* <Route path='*' element={<NotFound />} /> */}
