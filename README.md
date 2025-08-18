@@ -38,6 +38,9 @@ npm start
 
 🌐 Push Project to GitHub
 
+# Configure Git to Handle Line Endings Automatically
+git config core.autocrlf true
+
 # Initialize Git (if not already done)
 git init
 
@@ -47,11 +50,8 @@ git add .
 # Commit your changes
 git commit -m "Update"
 
-# Add your GitHub repo URL
-git remote add origin https://github.com/your-username/your-repo-name.git
-
 # Push to GitHub
-git push -u origin main
+git push origin main
 
 ## MySQL Table Creation Commands
 
