@@ -8,7 +8,8 @@ import Home from './components/Home';
 import ForgotPassword from './components/ForgotPassword';
 import ImageSlider from './ImageSlider';
 import Flights from './components/Flights';
-
+import Hotel from './components/Hotel';
+import Event from './components/Event';
 function App() {
   const [results, setResults] = useState([]);
   const location = useLocation();
@@ -23,7 +24,7 @@ function App() {
     }
   };
 
-  const hideNavbarRoutes = ['/login', '/Signup', '/forgot-password'];
+  const hideNavbarRoutes = ['/login', '/Signup', '/forgot-password','/Hotel'];
 
 
   return (
@@ -53,6 +54,8 @@ function App() {
         <Route path='/home' element={<Home />} />
         <Route path='/flight' element={<Flights />} />
         <Route path='/slider' element={<ImageSlider />} />
+         <Route path='/hotel' element={<Hotel />} />
+         <Route path='/event' element={<Event />} />
         {/* Optional: 404 fallback */}
         {/* <Route path='*' element={<NotFound />} /> */}
       </Routes>
