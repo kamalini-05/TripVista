@@ -10,6 +10,7 @@ import ImageSlider from './ImageSlider';
 import Flights from './components/Flights';
 import Hotel from './components/Hotel';
 import Event from './components/Event';
+
 function App() {
   const [results, setResults] = useState([]);
   const location = useLocation();
