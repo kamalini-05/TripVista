@@ -10,6 +10,7 @@ import ImageSlider from './ImageSlider';
 import Flights from './components/Flights';
 import Hotel from './components/Hotel';
 import Event from './components/Event';
+import Packages from './components/Packages';
 
 function App() {
   const [results, setResults] = useState([]);
@@ -42,7 +43,7 @@ function App() {
                 ))}
               </ul>
             ) : (
-              <p>Search for a destination to begin.</p>
+              <p></p>
             )}
           </main>
         </>
@@ -55,6 +56,7 @@ function App() {
         <Route path='/home' element={<Home />} />
         <Route path='/flight' element={<Flights />} />
         <Route path='/slider' element={<ImageSlider />} />
+        <Route path='/packages' element={<Packages />} />
          <Route path='/hotel' element={<Hotel />} />
          <Route path='/event' element={<Event />} />
         {/* Optional: 404 fallback */}
