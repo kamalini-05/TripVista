@@ -2,12 +2,13 @@ const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
 const bcrypt = require('bcrypt');
+const nodemailer = require('nodemailer');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-// 🔗 MySQL Connection
+// ✅ MySQL Connection
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'kamalini',
@@ -15,7 +16,39 @@ const db = mysql.createConnection({
   database: 'signup'
 });
 
-// 🔐 Signup
+// ✅ Nodemailer Setup
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'TripVistaaTourism@gmail.com',
+    pass: 'TripVistaa511hk' // 🔐 Use Gmail App Password
+  }
+});
+
+// ✅ Send Verification Code via Email
+app.post('/send-verification', (req, res) => {
+  const { to, code } = req.body;
+  if (!to || !code) {
+    return res.status(400).json({ message: 'Email and code are required.' });
+  }
+
+  const mailOptions = {
+    from: 'TripVistaaTourism@gmail.com',
+    to,
+    subject: 'TripVista Email Verification Code',
+    text: `Your verification code is: ${code}`
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.error("Mail error:", error);
+      return res.status(500).json({ message: 'Failed to send email.' });
+    }
+    res.status(200).json({ message: 'Verification code sent successfully.' });
+  });
+});
+
+// ✅ Signup (Assumes already verified client-side)
 app.post('/signup', async (req, res) => {
   const { name, email, password } = req.body;
   if (!name || !email || !password) {
@@ -39,7 +72,7 @@ app.post('/signup', async (req, res) => {
   }
 });
 
-// 🔓 Login
+// ✅ Login
 app.post('/login', (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {
@@ -60,9 +93,10 @@ app.post('/login', (req, res) => {
       if (updateErr) console.error('Login tracking error:', updateErr);
       res.status(200).json({
         message: 'Login successful',
+        username: user.username,
         user: {
           id: user.id,
-          username: user.username,
+          email: user.email,
           login_count: user.login_count + 1,
           last_login: new Date().toISOString()
         }
@@ -71,7 +105,7 @@ app.post('/login', (req, res) => {
   });
 });
 
-// 🔑 Forgot Password
+// ✅ Forgot Password
 app.post('/forgot-password', async (req, res) => {
   const { email, newPassword } = req.body;
   const trimmedEmail = email?.trim();
@@ -96,7 +130,7 @@ app.post('/forgot-password', async (req, res) => {
   }
 });
 
-// ✈️ Flight Search
+// ✅ Flight Search
 app.post('/api/search', (req, res) => {
   const {
     tripType,
@@ -131,7 +165,7 @@ app.post('/api/search', (req, res) => {
   });
 });
 
-// 🚀 Start Server
+// ✅ Server Start
 app.listen(8081, () => {
   console.log('✅ Unified server running on http://localhost:8081');
 });

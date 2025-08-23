@@ -2,16 +2,16 @@ import React from 'react';
 import './Packages.css';
 
 const packages = [
-  { title: "Beginner's guide", image: "https://source.unsplash.com/400x300/?nature,path" },
-  { title: "Accessible travel", image: "https://source.unsplash.com/400x300/?forest,walk" },
-  { title: "Planning tips", image: "https://source.unsplash.com/400x300/?city,travel" },
-  { title: "Trip Planner", image: "https://source.unsplash.com/400x300/?mountain,explore" },
-  { title: "Australian budget guide", image: "https://source.unsplash.com/400x300/?budget,travel" },
-  { title: "Itinerary planner", image: "https://source.unsplash.com/400x300/?palm,road" },
-  { title: "Find a travel agent", image: "https://source.unsplash.com/400x300/?kangaroo,travel" },
-  { title: "Find accommodation", image: "https://source.unsplash.com/400x300/?hotel,pool" },
-  { title: "Find tours", image: "https://source.unsplash.com/400x300/?desert,roadtrip" },
-  { title: "Find transport", image: "https://source.unsplash.com/400x300/?forest,path" }
+  { title: "Beginner's guide", image: "/images/Packages/1.jpg" },
+  { title: "Accessible travel", image: "/images/Packages/2.jpg" },
+  { title: "Planning tips", image: "/images/Packages/3.jpg" },
+  { title: "Trip Planner", image: "/images/Packages/4.jpg" },
+  { title: "Australian budget guide", image: "/images/Packages/5.jpg" },
+  { title: "Itinerary planner", image: "/images/Packages/6.jpg" },
+  { title: "Find a travel agent", image: "/images/Packages/7.jpg" },
+  { title: "Find accommodation", image: "/images/Packages/8.jpg" },
+  { title: "Find tours", image: "/images/Packages/9.jpg" },
+  { title: "Find transport", image: "/images/Packages/10.jpg" }
 ];
 
 function Packages() {

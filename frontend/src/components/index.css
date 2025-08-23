@@ -1,0 +1,390 @@
+
+/* Hero Section */
+.hero-section {
+  background-color: #e2e8f0;
+  padding: 4rem 0;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.hero-content {
+  flex: 1;
+  text-align: left;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  line-height: 1.2;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  font-size: 1.125rem;
+  color: #4a5568;
+  margin-bottom: 2rem;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hero-image {
+  flex: 1;
+  text-align: right;
+}
+
+.hero-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 1rem;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 9999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.btn-secondary {
+  background-color: #ffffff;
+  color: #4a5568;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Search Section */
+.search-section {
+  background-color: #ffffff;
+  padding: 2rem 0;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: -3rem;
+  position: relative;
+  z-index: 10;
+}
+
+.search-form-container {
+  padding: 1rem;
+}
+
+.search-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  align-items: center;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input {
+  padding: 0.75rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+}
+
+.btn-search,
+.btn-book {
+  align-self: flex-end;
+  margin-top: 1.5rem;
+}
+
+.btn-search {
+  background-color: #38a169;
+  color: #ffffff;
+}
+
+.btn-book {
+  background-color: #3182ce;
+  color: #ffffff;
+}
+
+/* Destination Section */
+.destination-section,
+.vacation-plan-section,
+.blog-section,
+.cta-section {
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.destination-section h2,
+.vacation-plan-section h2,
+.blog-section h2,
+.cta-section h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.destination-section p,
+.vacation-plan-section p,
+.blog-section p,
+.cta-section p {
+  color: #4a5568;
+  margin-bottom: 2rem;
+}
+
+.destination-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+.overlay {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  transition: background-color 0.3s ease; /* Added transition */
+}
+
+.gallery-item:hover .overlay {
+  background-color: rgba(0, 0, 0, 0.7); /* Added hover effect */
+}
+
+/* Vacation Plan Section */
+.plan-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.plan-card {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.plan-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.plan-card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.plan-card p {
+  color: #718096;
+  margin-bottom: 0.5rem;
+}
+
+.btn-see-more {
+  margin-top: 2rem;
+  background-color: #3182ce;
+  color: #ffffff;
+}
+
+/* Blog Section */
+.blog-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  text-align: left;
+  align-items: center;
+}
+
+.blog-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
+}
+
+.blog-post h3 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.blog-post p {
+  color: #4a5568;
+  line-height: 1.6;
+}
+
+/* CTA Section */
+.cta-section .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.cta-content {
+  flex: 1;
+  text-align: left;
+}
+
+.cta-content h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.cta-content p {
+  color: #4a5568;
+  margin-bottom: 2rem;
+}
+
+.cta-content a {
+  color: #3182ce;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cta-content a:hover {
+  text-decoration: underline;
+}
+
+.cta-image {
+  flex: 1;
+  text-align: center;
+}
+
+.cta-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Footer */
+.footer {
+  background-color: #2d3748;
+  color: #e2e8f0;
+  padding: 4rem 0;
+  text-align: left;
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-col h3 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.footer-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-col a {
+  text-decoration: none;
+  color: #e2e8f0;
+  transition: color 0.2s ease-in-out;
+}
+
+.footer-col a:hover {
+  color: #ffffff;
+}
+
+.social-icons a {
+  margin-right: 1rem;
+  font-size: 1.5rem;
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #4a5568;
+  padding-top: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+
+  .nav-links {
+    margin-top: 1rem;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nav-links li {
+    margin: 0.5rem 0;
+  }
+
+  .auth-buttons {
+    margin-top: 1rem;
+  }
+
+  .hero-section .container,
+  .blog-grid,
+  .cta-section .container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-content,
+  .hero-image,
+  .blog-image,
+  .blog-post,
+  .cta-content,
+  .cta-image {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-form {
+    grid-template-columns: 1fr;
+  }
+}

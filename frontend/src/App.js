@@ -11,6 +11,11 @@ import Flights from './components/Flights';
 import Hotel from './components/Hotel';
 import Event from './components/Event';
 import Packages from './components/Packages';
+import TrainSearch from './components/TrainSearch';
+import Festival from './components/Festival';
+import Homestay from './components/Homestay';
+import HotelBooking from './components/HotelBooking';
+import Index from './components/Index';
 
 function App() {
   const [results, setResults] = useState([]);
@@ -26,12 +31,10 @@ function App() {
     }
   };
 
-  const hideNavbarRoutes = ['/login', '/Signup', '/forgot-password','/Hotel'];
-
+  const hideNavbarRoutes = ['/login', '/signup', '/forgot-password'];
 
   return (
     <div>
-      {/* Conditionally render TouristNavbar */}
       {!hideNavbarRoutes.includes(location.pathname) && (
         <>
           <TouristNavbar onSearch={handleSearch} />
@@ -57,10 +60,13 @@ function App() {
         <Route path='/flight' element={<Flights />} />
         <Route path='/slider' element={<ImageSlider />} />
         <Route path='/packages' element={<Packages />} />
-         <Route path='/hotel' element={<Hotel />} />
-         <Route path='/event' element={<Event />} />
-        {/* Optional: 404 fallback */}
-        {/* <Route path='*' element={<NotFound />} /> */}
+        <Route path='/hotel' element={<Hotel />} />
+        <Route path='/event' element={<Event />} />
+        <Route path='/train' element={<TrainSearch />} />
+        <Route path='/festival' element={<Festival />} />
+        <Route path='/homestay' element={<Homestay />} />
+        <Route path='/hotelbooking' element={<HotelBooking />} />
+        <Route path='/' element={<Index/>} /> {/* Changed path to '/' to be your homepage */}
       </Routes>
     </div>
   );

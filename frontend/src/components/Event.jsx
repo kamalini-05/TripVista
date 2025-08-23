@@ -2,18 +2,16 @@ import React from 'react';
 import './Event.css';
 
 const galleryImages = [
-  "https://source.unsplash.com/featured/?temple",
-  "https://source.unsplash.com/featured/?festival",
-  "https://source.unsplash.com/featured/?dance",
-  "https://source.unsplash.com/featured/?food",
-  "https://source.unsplash.com/featured/?portrait",
-  "https://source.unsplash.com/featured/?culture",
-  "https://source.unsplash.com/featured/?hands",
-  "https://source.unsplash.com/featured/?dog",
-  "https://source.unsplash.com/featured/?coffee",
-  "https://source.unsplash.com/featured/?flower",
-  "https://source.unsplash.com/featured/?hair",
-  "https://source.unsplash.com/featured/?car"
+  "/images/Packages/1.jpg",
+  "/images/Packages/2.jpg",
+  "/images/Packages/3.jpg",
+  "/images/Packages/4.jpg",
+  "/images/Packages/5.jpg",
+  "/images/Packages/6.jpg",
+  "/images/Packages/7.jpg",
+  "/images/Packages/8.jpg",
+  "/images/Packages/9.jpg",
+  "/images/Packages/10.jpg",
 ];
 
 function Event() {

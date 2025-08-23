@@ -1,0 +1,268 @@
+.train-container {
+  font-family: 'Segoe UI', sans-serif;
+  padding: 20px;
+  background-color: #f5f7fa;
+}
+
+.search-bar {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+}
+
+.trip-type-toggle {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.trip-btn {
+  padding: 8px 16px;
+  background-color: #e0e0e0;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.trip-btn.active {
+  background-color: #0078d4;
+  color: white;
+}
+
+.route-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.route-box {
+  display: flex;
+  flex: 1;
+  gap: 10px;
+  align-items: flex-end;
+  min-width: 300px;
+}
+
+.location {
+  flex: 1;
+  position: relative;
+}
+
+.location-label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+
+.location-select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.switch-icon {
+  font-size: 18px;
+  padding: 0 10px;
+  cursor: default;
+  user-select: none;
+}
+
+.autocomplete-popup {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-top: none;
+  max-height: 150px;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+.autocomplete-option {
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+.autocomplete-option:hover {
+  background-color: #f0f0f0;
+}
+
+.date-row {
+  display: flex;
+  gap: 16px;
+  min-width: 300px;
+  flex: 1;
+}
+
+.date-container {
+  position: relative;
+  flex: 1;
+}
+
+.date-box {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.date-box.disabled {
+  background-color: #f2f2f2;
+  pointer-events: none;
+  color: #888;
+}
+
+.date-label {
+  font-weight: bold;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.calendar-popup {
+  position: absolute;
+  top: 100%;
+  z-index: 20;
+  background: white;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+}
+
+.summary-row-wrapper {
+  margin-top: 20px;
+  position: relative;
+}
+
+.summary-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.summary-box {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: #fff;
+  flex-shrink: 0;
+}
+
+.passenger-panel,
+.class-panel {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 10px;
+  z-index: 15;
+}
+
+.passenger-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.passenger-label {
+  font-weight: 500;
+}
+
+.passenger-controls button {
+  background: #eee;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.passenger-controls button:hover {
+  background-color: #ddd;
+}
+
+.class-option {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+}
+
+.class-option.active {
+  background-color: #0078d4;
+  color: white;
+}
+
+.search-btn {
+  background-color: #0078d4;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.search-btn:hover {
+  background-color: #005fa3;
+}
+
+/* Deals Section */
+.deals-section {
+  margin-top: 40px;
+}
+
+.deals-header {
+  margin-bottom: 20px;
+}
+
+.deals-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 16px;
+  padding-bottom: 10px;
+}
+
+.deal-card {
+  min-width: 250px;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+}
+
+.deal-image {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+
+.deal-info {
+  padding: 12px;
+}
+
+.deal-info h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.deal-price {
+  margin-top: 8px;
+  color: #0078d4;
+  font-weight: bold;
+}
+
+
+
+
+

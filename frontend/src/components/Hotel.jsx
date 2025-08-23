@@ -1,226 +1,285 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import { statesData } from './data';
 import './Hotel.css';
+import { FaTimes } from 'react-icons/fa';
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import HotelBooking from './HotelBooking.jsx';
 
-function Hotel() {
-  const states = [
-    "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
-    "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand",
-    "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur",
-    "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab",
-    "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura",
-    "Uttar Pradesh", "Uttarakhand", "West Bengal"
-  ];
-
-  const hotelDataByState = {
-  "Andhra Pradesh": [
-    { name: "Novotel Vijayawada", image: "https://source.unsplash.com/300x200/?vijayawada", type: "City Hotel" },
-    { name: "Haritha Beach Resort", image: "https://source.unsplash.com/300x200/?beach", type: "Coastal Retreat" }
-  ],
-  "Arunachal Pradesh": [
-    { name: "Donyi Polo Ashok", image: "https://source.unsplash.com/300x200/?mountain", type: "Hilltop Stay" },
-    { name: "Hotel Pemaling", image: "https://source.unsplash.com/300x200/?valley", type: "Valley View Lodge" }
-  ],
-  "Assam": [
-    { name: "Radisson Blu Guwahati", image: "https://source.unsplash.com/300x200/?guwahati", type: "Luxury Hotel" },
-    { name: "Brahmaputra Jungle Resort", image: "https://source.unsplash.com/300x200/?jungle", type: "Eco Stay" }
-  ],
-  "Bihar": [
-    { name: "Hotel Maurya Patna", image: "https://source.unsplash.com/300x200/?patna", type: "Business Hotel" },
-    { name: "Bodhgaya Regency", image: "https://source.unsplash.com/300x200/?temple", type: "Pilgrim Stay" }
-  ],
-  "Chhattisgarh": [
-    { name: "Hotel Babylon Inn", image: "https://source.unsplash.com/300x200/?city", type: "Urban Comfort" },
-    { name: "Jungle Safari Lodge", image: "https://source.unsplash.com/300x200/?forest", type: "Wildlife Retreat" }
-  ],
-  "Goa": [
-    { name: "Park Hyatt Goa", image: "https://source.unsplash.com/300x200/?goa", type: "Beachfront Resort" },
-    { name: "Taj Exotica", image: "https://source.unsplash.com/300x200/?luxury", type: "Luxury Escape" }
-  ],
-  "Gujarat": [
-    { name: "The Fern Ahmedabad", image: "https://source.unsplash.com/300x200/?ahmedabad", type: "Eco Hotel" },
-    { name: "Rann Riders", image: "https://source.unsplash.com/300x200/?desert", type: "Desert Camp" }
-  ],
-  "Haryana": [
-    { name: "Vivanta Panchkula", image: "https://source.unsplash.com/300x200/?panchkula", type: "Luxury Stay" },
-    { name: "Golden Tulip Gurgaon", image: "https://source.unsplash.com/300x200/?gurgaon", type: "Business Hotel" }
-  ],
-  "Himachal Pradesh": [
-    { name: "Wildflower Hall", image: "https://source.unsplash.com/300x200/?shimla", type: "Hill Retreat" },
-    { name: "The Himalayan Manali", image: "https://source.unsplash.com/300x200/?manali", type: "Mountain Lodge" }
-  ],
-  "Jharkhand": [
-    { name: "Hotel Capitol Hill", image: "https://source.unsplash.com/300x200/?ranchi", type: "City Stay" },
-    { name: "Netarhat Forest Lodge", image: "https://source.unsplash.com/300x200/?forest", type: "Nature Stay" }
-  ],
-  "Karnataka": [
-    { name: "The Leela Palace Bengaluru", image: "https://source.unsplash.com/300x200/?bengaluru", type: "Luxury Hotel" },
-    { name: "Orange County Coorg", image: "https://source.unsplash.com/300x200/?coorg", type: "Coffee Estate Stay" }
-  ],
-  "Kerala": [
-    { name: "Kumarakom Lake Resort", image: "https://source.unsplash.com/300x200/?backwater", type: "Backwater Retreat" },
-    { name: "The Leela Kovalam", image: "https://source.unsplash.com/300x200/?cliff", type: "Cliffside Luxury" }
-  ],
-  "Madhya Pradesh": [
-    { name: "Jehan Numa Palace", image: "https://source.unsplash.com/300x200/?bhopal", type: "Heritage Hotel" },
-    { name: "Kanha Jungle Lodge", image: "https://source.unsplash.com/300x200/?kanha", type: "Wildlife Stay" }
-  ],
-  "Maharashtra": [
-    { name: "Taj Mahal Palace Mumbai", image: "https://source.unsplash.com/300x200/?mumbai", type: "Iconic Luxury" },
-    { name: "Hilton Shillim Retreat", image: "https://source.unsplash.com/300x200/?hill", type: "Wellness Retreat" }
-  ],
-  "Manipur": [
-    { name: "Classic Grande Imphal", image: "https://source.unsplash.com/300x200/?imphal", type: "City Hotel" },
-    { name: "Loktak Lake Lodge", image: "https://source.unsplash.com/300x200/?lake", type: "Lakeside Stay" }
-  ],
-  "Meghalaya": [
-    { name: "Ri Kynjai Resort", image: "https://source.unsplash.com/300x200/?shillong", type: "Lake View Retreat" },
-    { name: "Polo Towers", image: "https://source.unsplash.com/300x200/?meghalaya", type: "Urban Comfort" }
-  ],
-  "Mizoram": [
-    { name: "Hotel Regency Aizawl", image: "https://source.unsplash.com/300x200/?aizawl", type: "City Stay" },
-    { name: "Chaltlang Hill Resort", image: "https://source.unsplash.com/300x200/?hill", type: "Hilltop Lodge" }
-  ],
-  "Nagaland": [
-    { name: "Hotel Japfu Kohima", image: "https://source.unsplash.com/300x200/?kohima", type: "Cultural Stay" },
-    { name: "Hornbill Lodge", image: "https://source.unsplash.com/300x200/?tribal", type: "Ethnic Retreat" }
-  ],
-  "Odisha": [
-    { name: "Mayfair Waves Puri", image: "https://source.unsplash.com/300x200/?puri", type: "Beach Resort" },
-    { name: "Swosti Premium Bhubaneswar", image: "https://source.unsplash.com/300x200/?temple", type: "City Hotel" }
-  ],
-  "Punjab": [
-    { name: "Hyatt Regency Amritsar", image: "https://source.unsplash.com/300x200/?amritsar", type: "Pilgrim Stay" },
-    { name: "The Oberoi Sukhvilas", image: "https://source.unsplash.com/300x200/?luxury", type: "Forest Retreat" }
-  ],
-  "Rajasthan": [
-    { name: "Umaid Bhawan Palace", image: "https://source.unsplash.com/300x200/?palace", type: "Heritage Luxury" },
-    { name: "The Oberoi Udaivilas", image: "https://source.unsplash.com/300x200/?udaipur", type: "Lakefront Palace" }
-  ],
-  "Sikkim": [
-    { name: "Mayfair Spa Resort Gangtok", image: "https://source.unsplash.com/300x200/?gangtok", type: "Mountain Retreat" },
-    { name: "The Elgin Nor-Khill", image: "https://source.unsplash.com/300x200/?sikkim", type: "Heritage Stay" }
-  ],
-  "Tamil Nadu": [
-    { name: "ITC Grand Chola", image: "https://source.unsplash.com/300x200/?chennai", type: "Luxury Palace Hotel" },
-    { name: "Taj Fisherman's Cove", image: "https://source.unsplash.com/300x200/?beach", type: "Beach Resort" }
-  ],
-  "Telangana": [
-    { name: "Taj Falaknuma Palace", image: "https://source.unsplash.com/300x200/?hyderabad", type: "Royal Stay" },
-    { name: "Novotel Hyderabad", image: "https://source.unsplash.com/300x200/?city", type: "Business Hotel" }
-  ],
-  "Tripura": [
-    { name: "Hotel Sonar Tori", image: "https://source.unsplash.com/300x200/?agartala", type: "City Stay" },
-    { name: "Neermahal Lake Resort", image: "https://source.unsplash.com/300x200/?lake", type: "Heritage Retreat" }
-  ],
-    "Uttar Pradesh": [
-    { name: "Taj View Agra", image: "https://source.unsplash.com/300x200/?agra", type: "Heritage Hotel" },
-    { name: "Clarks Varanasi", image: "https://source.unsplash.com/300x200/?varanasi", type: "Pilgrim Stay" }
-  ],
-  "Uttarakhand": [
-    { name: "Ananda in the Himalayas", image: "https://source.unsplash.com/300x200/?himalayas", type: "Wellness Retreat" },
-    { name: "The Naini Retreat", image: "https://source.unsplash.com/300x200/?nainital", type: "Lake View Hotel" }
-  ],
-  "West Bengal": [
-    { name: "The Oberoi Grand Kolkata", image: "https://source.unsplash.com/300x200/?kolkata", type: "Colonial Luxury" },
-    { name: "Mayfair Darjeeling", image: "https://source.unsplash.com/300x200/?darjeeling", type: "Hill Station Stay" }
-  ]
-};
-
-  const [state, setState] = useState("Tamil Nadu");
-  const [adults, setAdults] = useState(2);
-  const [children, setChildren] = useState(0);
-  const [rooms, setRooms] = useState(1);
-  const [activeSelector, setActiveSelector] = useState(null);
-  const [results, setResults] = useState([]);
-
-  const toggleSelector = (type) => {
-    setActiveSelector(prev => (prev === type ? null : type));
-  };
-
-  const increment = (setter) => setter(prev => prev + 1);
-  const decrement = (setter) => setter(prev => (prev > 0 ? prev - 1 : 0));
-
-  const handleSearch = () => {
-    const hotels = hotelDataByState[state] || [];
-    setResults(hotels);
-  };
-
+// BookingForm component is defined outside the main component
+const BookingForm = ({ hotel, onClose, onPayNowClick }) => {
   return (
-    <div className="hotel-bg">
-      <div className="hotel-box">
-        {/* 🔹 Row 1 */}
-        <div className="search-row">
-          <select value={state} onChange={(e) => setState(e.target.value)} className="state-input">
-            {states.map((stateName) => (
-              <option key={stateName} value={stateName}>{stateName}</option>
-            ))}
-          </select>
-          <input type="date" />
-          <input type="date" />
-          <select>
-            <option>₹1,500 – ₹2,500</option>
-            <option>₹2,500 – ₹4,000</option>
-            <option>₹4,000+</option>
-          </select>
+    <div className="booking-overlay">
+      <div className="booking-form-container">
+        <div className="booking-header">
+          <h2>Your payment options</h2>
+          <button onClick={onClose} className="close-btn"><FaTimes /></button>
         </div>
-
-        {/* 🔹 Row 2 */}
-        <div className="search-row">
-          <div className="guest-selector">
-            {["adults", "children", "rooms"].map((type) => (
-              <div key={type} className={`guest-box ${activeSelector === type ? "active" : ""}`}>
-                <button onClick={() => toggleSelector(type)}>
-                  {type.charAt(0).toUpperCase() + type.slice(1)}
-                </button>
-                {activeSelector === type && (
-                  <div className="counter-box">
-                    <button onClick={() => decrement(
-                      type === "adults" ? setAdults :
-                      type === "children" ? setChildren :
-                      setRooms
-                    )}>-</button>
-                    <span>{
-                      type === "adults" ? adults :
-                      type === "children" ? children :
-                      rooms
-                    }</span>
-                    <button onClick={() => increment(
-                      type === "adults" ? setAdults :
-                      type === "children" ? setChildren :
-                      setRooms
-                    )}>+</button>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-
-          <div className="guest-summary">
-            Guests: Adults: {adults}, Children: {children}, Rooms: {rooms}
-          </div>
-
-          <button className="search-button" onClick={handleSearch}>SEARCH</button>
-        </div>
-      </div>
-
-      {/* 🔍 Hotel Results */}
-      <div className="hotel-results">
-        {results.length > 0 ? (
-          results.map((hotel, index) => (
-            <div key={index} className="hotel-card">
-              <img src={hotel.image} alt={hotel.name} />
-              <div>
-                <h4>{hotel.name}</h4>
-                <p>{hotel.type}</p>
+        <p className="fully-refundable">✓ Fully refundable before Sat, 23 Aug</p>
+        <div className="payment-options">
+          {/* Pay when you stay card */}
+          <div className="payment-card pay-at-property">
+            <h3>Pay when you stay</h3>
+            <div className="option-content">
+              <ul>
+                <li>Pay the property directly in their preferred currency (INR)</li>
+              </ul>
+              <div className="price-details">
+                <div className="hotels-rewards">
+                  <span className="hotels-logo">H</span> Hotels.com® Rewards
+                </div>
+                <div className="price-info">
+                  <span className="main-price">₹32,912</span>
+                  <span className="total-price">₹1,94,181 total includes taxes & fees</span>
+                </div>
               </div>
             </div>
-          ))
-        ) : (
-          <p className="no-results">No hotels found for {state}. Try another state or adjust your filters.</p>
-        )}
+            <button className="pay-btn pay-at-property-btn">Pay at property</button>
+            <p className="disclaimer">You will not be charged until your stay</p>
+          </div>
+          {/* Pay now card */}
+          <div className="payment-card pay-now-card">
+            <h3>Pay now</h3>
+            <div className="option-content">
+              <ul>
+                <li>You can use a valid Hotels.com coupon</li>
+                <li>We will process your payment in your local currency</li>
+                <li>More ways to pay: use debit/credit card</li>
+              </ul>
+              <div className="price-details">
+                <div className="hotels-rewards">
+                  <span className="hotels-logo">H</span> Hotels.com® Rewards
+                </div>
+                <div className="price-info">
+                  <span className="main-price">₹32,912</span>
+                  <span className="total-price">₹1,94,181 total includes taxes & fees</span>
+                </div>
+              </div>
+            </div>
+            {/* This button now triggers the navigation */}
+            <button className="pay-btn pay-now-btn" onClick={onPayNowClick}>Pay now</button>
+            <p className="disclaimer">You will not be charged yet</p>
+          </div>
+        </div>
       </div>
     </div>
   );
-}
+};
+
+// Main Hotel component
+const Hotel = () => {
+  // State variables for managing the UI
+  const [searchTerm, setSearchTerm] = useState('');
+  const [showBookingForm, setShowBookingForm] = useState(false);
+  const [showFullBookingForm, setShowFullBookingForm] = useState(false);
+  const [selectedHotel, setSelectedHotel] = useState(null);
+  const galleryRef = useRef(null);
+
+  // Function to handle clicking "Book Now"
+  const handleBookNowClick = (hotel) => {
+    setSelectedHotel(hotel);
+    setShowBookingForm(true);
+    setShowFullBookingForm(false);
+  };
+
+  // Function to handle the transition to the full booking form
+  const handlePayNowProceed = () => {
+    setShowBookingForm(false);
+    setShowFullBookingForm(true);
+  };
+
+  // Filter the hotels based on the search term
+  const filteredStates = statesData.filter(state =>
+    state.state.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  // Functions for scrolling the image gallery
+  const scrollLeft = () => {
+    if (galleryRef.current) {
+      galleryRef.current.scrollBy({ left: -300, behavior: 'smooth' });
+    }
+  };
+
+  const scrollRight = () => {
+    if (galleryRef.current) {
+      galleryRef.current.scrollBy({ left: 300, behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <div className="main-content">
+      <section className="listings-hero">
+        <h1 className="listings-title">Famous Hotels in India</h1>
+        {/* The CSS for this div makes the input and button appear on one line */}
+        <div className="search-bar">
+          <input
+            type="text"
+            placeholder="Search by state..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <button>Search</button>
+        </div>
+      </section>
+
+      {/* Conditionally render the listings grid if there is a search term */}
+      {searchTerm && (
+        <section className="listings-grid">
+          {filteredStates.map((stateInfo, index) => (
+            <div key={index} className="state-section">
+              <h2 className="state-heading">{stateInfo.state}</h2>
+              <div className="item-container">
+                {stateInfo.hotels.map((hotel, hotelIndex) => (
+                  <div key={hotelIndex} className="listing-card">
+                    <img src={hotel.image} alt={hotel.name} className="listing-image" />
+                    <div className="listing-info">
+                      <h3>{hotel.name}</h3>
+                      <button className="book-btn" onClick={() => handleBookNowClick(hotel)}>Book Now</button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+          {filteredStates.length === 0 && (
+            <p className="no-results">No hotels found for that state. Please try another search.</p>
+          )}
+        </section>
+      )}
+
+{/* New section for key features */}
+      <section className="features-section">
+        <h2 className="features-heading">Why Choose Us</h2>
+        <div className="features-grid">
+          <div className="feature-item">
+            <span className="feature-icon">☀️</span>
+            <h3 className="feature-title">Soft Climate</h3>
+            <p className="feature-description">
+              Enjoy a pleasant and comfortable climate, perfect for relaxation.
+            </p>
+          </div>
+          <div className="feature-item">
+            <span className="feature-icon">🍽️</span>
+            <h3 className="feature-title">Wonderful Cuisine</h3>
+            <p className="feature-description">
+              Savor delicious, locally-inspired dishes prepared by our chefs.
+            </p>
+          </div>
+          <div className="feature-item">
+            <span className="feature-icon">📍</span>
+            <h3 className="feature-title">Convenient Location</h3>
+            <p className="feature-description">
+              Our properties are located in prime spots, close to popular attractions.
+            </p>
+          </div>
+          <div className="feature-item">
+            <span className="feature-icon">📶</span>
+            <h3 className="feature-title">Free Wi-Fi</h3>
+            <p className="feature-description">
+              Stay connected with complimentary high-speed internet access.
+            </p>
+          </div>
+          <div className="feature-item">
+            <span className="feature-icon">🎉</span>
+            <h3 className="feature-title">Choice of Entertainment</h3>
+            <p className="feature-description">
+              From sports to evening shows, we offer a variety of activities for all.
+            </p>
+          </div>
+          <div className="feature-item">
+            <span className="feature-icon">🏞️</span>
+            <h3 className="feature-title">Large Territory</h3>
+            <p className="feature-description">
+              Explore our spacious grounds with beautiful gardens and recreational areas.
+            </p>
+          </div>
+        </div>
+      </section>
+      {/* Image Gallery Section */}
+      <section className="image-gallery-container">
+        <h2>Explore More Destinations</h2>
+        <div className="image-gallery" ref={galleryRef}>
+          <div className="gallery-item">
+            <img src="https://via.placeholder.com/300x200/87CEEB/FFFFFF?Text=Cityscape" alt="Cityscape" />
+          </div>
+          <div className="gallery-item">
+            <img src="https://via.placeholder.com/300x200/ADD8E6/FFFFFF?Text=Nature+View" alt="Nature View" />
+          </div>
+          <div className="gallery-item">
+            <img src="https://via.placeholder.com/300x200/B0E0E6/FFFFFF?Text=Mountain+Landscape" alt="Mountain Landscape" />
+          </div>
+          <div className="gallery-item">
+            <img src="https://via.placeholder.com/300x200/F0F8FF/000000?Text=Beach+Scene" alt="Beach Scene" />
+          </div>
+          <div className="gallery-item">
+            <img src="https://via.placeholder.com/300x200/FAEBD7/000000?Text=Historical+Site" alt="Historical Site" />
+          </div>
+          {/* Add more gallery items as needed */}
+        </div>
+        <div className="gallery-navigation">
+          <button className="nav-button prev-btn" onClick={scrollLeft}>
+            <FaArrowLeft />
+          </button>
+          <button className="nav-button next-btn" onClick={scrollRight}>
+            <FaArrowRight />
+          </button>
+        </div>
+      </section>
+
+      {/* Booking Form rendered conditionally */}
+      {showBookingForm && selectedHotel && (
+        <BookingForm
+          hotel={selectedHotel}
+          onClose={() => setShowBookingForm(false)}
+          onPayNowClick={handlePayNowProceed}
+        />
+      )}
+
+      {/* Full Hotel Booking Page */}
+      {showFullBookingForm && <HotelBooking />}
+
+      {/* Footer Section */}
+      <footer className="footer">
+        <div className="footer-content">
+          <div className="footer-section about">
+            <h3>About Us</h3>
+            <p>
+              TripVista is your premier guide to India's most stunning destinations,
+              famous hotels, and authentic homestays. We help you book unforgettable
+              journeys and experiences.
+            </p>
+          </div>
+          <div className="footer-section links">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><button className="footer-link-btn">Home</button></li>
+              <li><button className="footer-link-btn">Hotels</button></li>
+              <li><button className="footer-link-btn">Homestays</button></li>
+              <li><button className="footer-link-btn">Festivals</button></li>
+            </ul>
+          </div>
+          <div className="footer-section contact">
+            <h3>Contact Us</h3>
+            <p>Email: contact@tripvista.com</p>
+            <p>Phone: +91 98765 43210</p>
+            <div className="social-icons">
+              {/* Add your social media icons here */}
+            </div>
+          </div>
+          <div className="footer-section newsletter">
+            <h3>Newsletter</h3>
+            <p>Stay updated with our latest offers and travel tips.</p>
+            <div className="newsletter-form">
+              <input type="email" placeholder="Enter your email" />
+              <button>Subscribe</button>
+            </div>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <p>&copy; 2024 TripVista. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+  );
+};
 
 export default Hotel;

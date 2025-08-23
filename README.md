@@ -91,3 +91,5 @@ SHOW TABLES;
 # Select data
 SELECT * FROM users;
 SELECT * FROM flight_search;
+today
+npm install react-datepicker

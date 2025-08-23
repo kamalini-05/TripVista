@@ -1,60 +1,153 @@
+/* Import a modern font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+/* --- Navbar Container --- */
 .tourist-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  background-color: #456882;
-  padding: 10px 20px;
-  color: white;
-  font-family: 'Segoe UI', sans-serif;
+  color: #0A0A22; /* Changed text color to a professional dark tone */
+  background-color: #ffffff; /* Changed navbar background to white */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Soft shadow for depth */
+  padding: 1rem 2rem; /* Adjusted padding for a balanced look */
+  font-family: 'Roboto', sans-serif;
 }
 
+/* --- Logo Styling --- */
 .logo {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 1.5rem;
-  font-weight: bold;
 }
 
 .logo img {
-  width: 200px;
-  height: 80px;
-  border-radius: 40px 5px 40px 5px;
+  width: 150px; /* Increased logo size */
+  height: auto;
+  border-radius: 50%; /* Circular shape */
 }
 
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #4A4A4A; /* A dark, professional color */
+}
+
+/* --- Nav Links Container --- */
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 18px;
+  gap: 15px; /* Decreased gap for better spacing */
+  margin: 0;
+  padding: 0;
+  align-items: center;
 }
 
-.nav-links a {
-  color: white;
-  text-decoration: none;
+/* --- Individual Nav Item --- */
+.nav-item {
+  position: relative;
+}
+
+/* --- Buttons and Links --- */
+.nav-links a,
+.nav-links .nav-button {
+  color: #673AB7; /* Changed text color to a professional purple */
+  background: none;
+  border: none;
+  font-size: 1rem;
   font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
-.nav-links a:hover {
-  color: black;
-  text-decoration: wavy;
-  cursor: pointer;}
 
+/* Hover and Focus effect for both links and buttons */
+.nav-links a:hover,
+.nav-links a.active,
+.nav-links .nav-button:hover,
+.nav-links .nav-button.active {
+  color: #512DA8; /* A slightly darker purple for hover */
+  background-color: #f0f8ff; /* Light background on hover */
+  text-decoration: none;
+}
+
+/* --- Dropdown Container --- */
+.styled-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%); /* Centering the dropdown */
+  margin-top: 10px; /* More space from the parent link/button */
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  padding: 12px;
+  min-width: 180px;
+  z-index: 1000;
+  list-style: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.styled-dropdown.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Style the links inside the dropdown */
+.styled-dropdown a {
+  color: #555;
+  display: block;
+  padding: 8px 12px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.styled-dropdown a:hover {
+  background-color: #f7f7f7;
+  color: #007bff;
+}
+
+/* --- Search Form --- */
 .search-form {
   display: flex;
-  gap: 8px;
+  align-items: center;
+  gap: 10px;
 }
 
 .search-form input {
-  padding: 6px 10px;
-  border-radius: 4px;
-  border: none;
+  padding: 8px 12px;
+  border-radius: 20px; /* Pill shape for search bar */
+  border: 1px solid #ddd;
+  font-size: 0.95rem;
+  transition: border-color 0.3s ease;
 }
 
-.search-form button {
-  padding: 6px 12px;
-  background-color: #F2EDD1;
-  color: black;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+.search-form input:focus {
+  outline: none;
+  border-color: #007bff;
 }
 
+/* --- Responsive styles for smaller screens --- */
+@media (max-width: 768px) {
+  .tourist-navbar {
+    flex-wrap: wrap;
+    padding: 1rem;
+  }
+
+  .nav-links,
+  .search-form {
+    flex-basis: 100%;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+}
